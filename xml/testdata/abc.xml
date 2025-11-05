@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <product id="1">
+    <name>Laptop</name>
+    <price>999.99</price>
+    <comment>This product is on sale this week</comment>
+  </product>
+  <product id="2">
+    <name>Mouse</name>
+    <price>25.50</price>
+    <comment>Best seller in electronics</comment>
+  </product>
+  <product id="3">
+    <name>Keyboard</name>
+    <price>75.00</price>
+  </product>
+</catalog>

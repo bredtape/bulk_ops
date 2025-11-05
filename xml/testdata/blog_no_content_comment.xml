@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blog>
+  <post id="101">
+    <title>Introduction to Go</title>
+    <author>Jane Doe</author>
+    <content>
+      <body>Go is a great programming language...</body>
+    </content>
+  </post>
+  <post id="102">
+    <title>XML Processing</title>
+    <author>John Smith</author>
+    <content>
+      <body>XML is widely used for data interchange...</body>
+    </content>
+  </post>
+  <comment>Reader feedback: Great examples</comment>
+</blog>
