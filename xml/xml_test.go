@@ -50,6 +50,9 @@ func runXMLSingleTest(t *testing.T, inputFile, expectedFile string, xpaths ...st
 		return
 	}
 
+	t.Logf("response headers: %v", resp.Header)
+	assert.Equal(t, resp.Header.Get("Content-Type"), "application/zip")
+
 	actualFileData, err := unpackZipArchive(bytes.NewReader(actual))
 	assert.Nil(t, err)
 

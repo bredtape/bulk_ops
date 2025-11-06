@@ -12,30 +12,30 @@ import (
 
 type ProcessFileFn = func(name string, w io.Writer, r io.Reader) error
 
-func Process(w io.Writer, r io.Reader, contentType string, inputSize int64, processFile ProcessFileFn) error {
+func Process(w io.Writer, r io.Reader, contentType string, processFile ProcessFileFn) error {
 	switch contentType {
 	case "":
 		return errors.New("Content-Type not specified")
 	case "application/zip":
-		return ProcessZip(w, r, inputSize, processFile)
+		return ProcessZip(w, r, processFile)
 	default:
 		return fmt.Errorf("Content-Type '%s' not supported as an archive", contentType)
 
 	}
 }
 
-func ProcessZip(w io.Writer, r io.Reader, inputSize int64, processFile ProcessFileFn) error {
-	if inputSize == 0 {
-		return errors.New("no data")
-	}
-
+func ProcessZip(w io.Writer, r io.Reader, processFile ProcessFileFn) error {
 	data, err := io.ReadAll(r)
 	if err != nil {
 		return errors.Wrap(err, "failed to read data")
 	}
 
+	if len(data) == 0 {
+		return errors.New("no data")
+	}
+
 	reader := bytes.NewReader(data)
-	zr, err := zip.NewReader(reader, inputSize)
+	zr, err := zip.NewReader(reader, int64(len(data)))
 	if err != nil {
 		return errors.Wrap(err, "failed to read data as .zip archive")
 	}

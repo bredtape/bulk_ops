@@ -33,7 +33,7 @@ func HandlePruneXPath() http.Handler {
 		}
 
 		defer r.Body.Close()
-		err := archive.Process(w, r.Body, r.Header.Get("Content-Type"), r.ContentLength, process)
+		err := archive.Process(w, r.Body, r.Header.Get("Content-Type"), process)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
